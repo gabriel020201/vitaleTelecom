@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitale Telecom | Soluções que conectam o seu negócio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons for precise iconography -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#081A35',
+                            navy: '#1C4D91',
+                            cyan: '#00B8D4',
+                            blue: '#1656A8',
+                            card: '#10264B',
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles to match specific visual details */
+        body {
+            background-color: #081A35;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        header { order: 0; }
+        #inicio { order: 1; }
+        #vivo { order: 2; }
+        #solucoes { order: 3; }
+        #sobre { order: 4; }
+        #contato { order: 5; }
+        h1, h2, h3, h4 {
+            font-family: 'Manrope', 'Inter', sans-serif;
+        }
+        .nav-link {
+            position: relative;
+            padding-bottom: 0.25rem;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #00B8D4;
+        }
+        .nav-link.active {
+            color: #00B8D4;
+            font-weight: 700;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #00B8D4;
+            box-shadow: 0 0 10px rgba(0, 184, 212, 0.45);
+        }
+        /* Custom glow effect */
+        .glow-cyan {
+            text-shadow: 0 0 8px rgba(0, 199, 232, 0.28);
+        }
+        .bg-gray-50.rounded-xl,
+        .bg-gray-50.rounded-2xl {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            border-color: #D8E3F0;
+            box-shadow: 0 8px 24px rgba(8, 26, 53, 0.10);
+        }
+        .bg-gray-50.rounded-xl:hover,
+        .bg-gray-50.rounded-2xl:hover {
+            border-color: #8CCFDE;
+            box-shadow: 0 14px 32px rgba(8, 26, 53, 0.16);
+            transform: translateY(-3px);
+        }
+        section.bg-white {
+            background-color: #F4F7FB;
+        }
+        /* Logo stylized V */
+        .logo-v {
+            background: linear-gradient(135deg, #00B8D4 0%, #1656A8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-style: italic;
+        }
+        .focus-ring:focus-visible,
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid #00B8D4;
+            outline-offset: 4px;
+        }
+        .mobile-menu {
+            border-top: 1px solid rgba(28, 77, 145, 0.65);
+        }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 6rem;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <header class="fixed top-0 w-full z-50 bg-brand-dark/95 backdrop-blur-sm border-b border-brand-navy">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#inicio" class="flex flex-col justify-center focus-ring" aria-label="Voltar ao início">
+                <img src="assets/logo.png" alt="Vitale Telecom Logo" class="h-16 sm:h-20 w-auto object-contain">
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium text-gray-300">
+                <a href="#inicio" class="nav-link active">Início</a>
+                <a href="#solucoes" class="nav-link flex items-center gap-1">Soluções <i class="ph-bold ph-caret-down text-xs"></i></a>
+                <a href="#vivo" class="nav-link">Vivo Empresas</a>
+                <a href="#sobre" class="nav-link">Por que a Vitale</a>
+                <a href="#suporte" class="nav-link">Suporte</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden md:block">
+                <a href="http://wa.me/556681084567" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-brand-cyan text-brand-cyan rounded-full px-5 py-2 text-sm font-semibold hover:bg-brand-cyan hover:text-brand-dark transition-all duration-300 shadow-[0_0_8px_rgba(0,199,232,0.14)] hover:shadow-[0_0_12px_rgba(0,199,232,0.24)]">
+                    <i class="ph-fill ph-whatsapp-logo text-lg"></i>
+                    Fale com um especialista
+                </a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="lg:hidden text-white text-2xl focus-ring" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+        <nav id="mobile-menu" class="mobile-menu hidden lg:hidden bg-brand-dark px-4 py-5" aria-label="Navegação mobile">
+            <div class="max-w-7xl mx-auto flex flex-col gap-4 text-sm font-semibold text-gray-200">
+                <a href="#inicio" class="mobile-nav-link">Início</a>
+                <a href="#solucoes" class="mobile-nav-link">Soluções</a>
+                <a href="#vivo" class="mobile-nav-link">Vivo Empresas</a>
+                <a href="#sobre" class="mobile-nav-link">Por que a Vitale</a>
+                <a href="#suporte" class="mobile-nav-link">Suporte</a>
+                <a href="http://wa.me/556681084567" target="_blank" rel="noopener noreferrer" class="mobile-nav-link text-brand-cyan">Falar com especialista</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="inicio" class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-radial from-brand-blue/20 to-transparent opacity-50 pointer-events-none transform translate-x-1/3 -translate-y-1/4 rounded-full"></div>
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Hero Content -->
+            <div>
+                <p class="text-brand-cyan text-sm font-bold uppercase tracking-widest mb-5">Tecnologia para empresas</p>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
+                    Conectividade que <br>
+                    <span class="text-brand-cyan glow-cyan">faz seu negócio avançar</span>
+                </h1>
+                
+                <p class="text-lg text-gray-300 mb-10 max-w-lg leading-relaxed">
+                    Soluções completas em conectividade, telefonia e tecnologia, com atendimento especializado para sua empresa operar sem interrupções.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 mb-14">
+                    <a href="http://wa.me/556681084567" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center gap-2 bg-brand-cyan text-brand-dark font-bold rounded-lg px-5 py-2.5 hover:bg-white transition-colors duration-300 shadow-[0_0_10px_rgba(0,199,232,0.24)]">
+                        <i class="ph-fill ph-whatsapp-logo text-xl"></i>
+                        Falar com especialista <i class="ph-bold ph-arrow-right"></i>
+                    </a>
+                    <a href="#solucoes" class="inline-flex justify-center items-center gap-2 border border-gray-400 text-white font-medium rounded-lg px-4 py-2.5 hover:border-white hover:bg-white/5 transition-colors duration-300">
+                        Ver soluções <i class="ph-bold ph-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Features Footer -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-gray-800">
+                    <div class="flex items-start gap-3">
+                        <i class="ph-bold ph-trend-up text-brand-cyan text-2xl"></i>
+                        <span class="text-xs text-gray-400 leading-tight">Mais produtividade<br>para sua equipe</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="ph-bold ph-shield-check text-brand-cyan text-2xl"></i>
+                        <span class="text-xs text-gray-400 leading-tight">Operação segura<br>e estável</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="ph-bold ph-headset text-brand-cyan text-2xl"></i>
+                        <span class="text-xs text-gray-400 leading-tight">Atendimento<br>especializado</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="ph-bold ph-handshake text-brand-cyan text-2xl"></i>
+                        <span class="text-xs text-gray-400 leading-tight">Soluções sob medida<br>para sua empresa</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Image Placeholder -->
+            <div class="relative h-[400px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl border border-gray-800/50">
+                <!-- Using a tech-business image as a realistic placeholder for the described image -->
+                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80" alt="Profissional com tablet" class="w-full h-full object-cover object-top opacity-80 mix-blend-luminosity">
+                <!-- Overlay styling to match the blue technological feel -->
+                <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/80 to-brand-blue/30 mix-blend-overlay"></div>
+                <!-- Network graphics placeholder -->
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/connected.png')] opacity-20"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="solucoes" class="bg-white text-gray-900 py-20 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">
+                    Nossas <span class="text-brand-blue">Soluções</span>
+                </h2>
+                <p class="text-gray-500 max-w-2xl mx-auto">
+                    Tudo o que sua empresa precisa em conectividade, comunicação e tecnologia, em um só lugar.
+                </p>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 relative flex flex-col h-full group">
+                    <div class="h-40 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=400" alt="Mobile" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-brand-navy/60 mix-blend-multiply"></div>
+                    </div>
+                    <div class="absolute top-32 left-6 w-14 h-14 bg-brand-card rounded-xl flex items-center justify-center text-brand-cyan shadow-lg border-2 border-white">
+                        <i class="ph-bold ph-device-mobile text-2xl"></i>
+                    </div>
+                    <div class="pt-12 px-6 pb-20 flex-grow bg-white">
+                        <h3 class="font-bold text-xl mb-2">Telefonia Móvel</h3>
+                        <p class="text-sm text-gray-500">Planos empresariais, portabilidade e gestão de linhas.</p>
+                    </div>
+                    <a href="#contato" aria-label="Saiba mais sobre Telefonia Móvel" class="absolute bottom-6 right-6 w-10 h-10 bg-brand-blue rounded-full flex items-center justify-center text-white shadow-md hover:bg-brand-cyan hover:text-brand-dark transition-colors">
+                        <i class="ph-bold ph-caret-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 relative flex flex-col h-full group">
+                    <div class="h-40 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=400" alt="Internet" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-brand-navy/60 mix-blend-multiply"></div>
+                    </div>
+                    <div class="absolute top-32 left-6 w-14 h-14 bg-brand-card rounded-xl flex items-center justify-center text-brand-cyan shadow-lg border-2 border-white">
+                        <i class="ph-bold ph-globe text-2xl"></i>
+                    </div>
+                    <div class="pt-12 px-6 pb-20 flex-grow bg-white">
+                        <h3 class="font-bold text-xl mb-2">Internet Empresarial</h3>
+                        <p class="text-sm text-gray-500">Fibra para empresas com alta performance.</p>
+                    </div>
+                    <a href="#contato" aria-label="Saiba mais sobre Internet Empresarial" class="absolute bottom-6 right-6 w-10 h-10 bg-brand-blue rounded-full flex items-center justify-center text-white shadow-md hover:bg-brand-cyan hover:text-brand-dark transition-colors">
+                        <i class="ph-bold ph-caret-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 relative flex flex-col h-full group">
+                    <div class="h-40 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=400" alt="Servers" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-brand-navy/60 mix-blend-multiply"></div>
+                    </div>
+                    <div class="absolute top-32 left-6 w-14 h-14 bg-brand-card rounded-xl flex items-center justify-center text-brand-cyan shadow-lg border-2 border-white">
+                        <i class="ph-bold ph-hard-drives text-2xl"></i>
+                    </div>
+                    <div class="pt-12 px-6 pb-20 flex-grow bg-white">
+                        <h3 class="font-bold text-xl mb-2">Link Dedicado</h3>
+                        <p class="text-sm text-gray-500">Conexão estável e segura para operações críticas.</p>
+                    </div>
+                    <a href="#contato" aria-label="Saiba mais sobre Link Dedicado" class="absolute bottom-6 right-6 w-10 h-10 bg-brand-blue rounded-full flex items-center justify-center text-white shadow-md hover:bg-brand-cyan hover:text-brand-dark transition-colors">
+                        <i class="ph-bold ph-caret-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 relative flex flex-col h-full group">
+                    <div class="h-40 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1520923642038-b4259aceba49?auto=format&fit=crop&q=80&w=400" alt="Phone" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-brand-navy/60 mix-blend-multiply"></div>
+                    </div>
+                    <div class="absolute top-32 left-6 w-14 h-14 bg-brand-card rounded-xl flex items-center justify-center text-brand-cyan shadow-lg border-2 border-white">
+                        <i class="ph-bold ph-shield-check text-2xl"></i>
+                    </div>
+                    <div class="pt-12 px-6 pb-20 flex-grow bg-white">
+                        <h3 class="font-bold text-xl mb-2">PABX em Nuvem</h3>
+                        <p class="text-sm text-gray-500">Telefonia inteligente com ramais, URA e mobilidade.</p>
+                    </div>
+                    <a href="#contato" aria-label="Saiba mais sobre PABX em Nuvem" class="absolute bottom-6 right-6 w-10 h-10 bg-brand-blue rounded-full flex items-center justify-center text-white shadow-md hover:bg-brand-cyan hover:text-brand-dark transition-colors">
+                        <i class="ph-bold ph-caret-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 relative flex flex-col h-full group">
+                    <div class="h-40 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=400" alt="Laptops" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-brand-navy/60 mix-blend-multiply"></div>
+                    </div>
+                    <div class="absolute top-32 left-6 w-14 h-14 bg-brand-card rounded-xl flex items-center justify-center text-brand-cyan shadow-lg border-2 border-white">
+                        <i class="ph-bold ph-monitor text-2xl"></i>
+                    </div>
+                    <div class="pt-12 px-6 pb-20 flex-grow bg-white">
+                        <h3 class="font-bold text-xl mb-2">Locação de Equipamentos</h3>
+                        <p class="text-sm text-gray-500">Notebooks, computadores e tablets para sua empresa.</p>
+                    </div>
+                    <a href="#contato" aria-label="Saiba mais sobre Locação de Equipamentos" class="absolute bottom-6 right-6 w-10 h-10 bg-brand-blue rounded-full flex items-center justify-center text-white shadow-md hover:bg-brand-cyan hover:text-brand-dark transition-colors">
+                        <i class="ph-bold ph-caret-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 relative flex flex-col h-full group">
+                    <div class="h-40 relative overflow-hidden flex items-center justify-center bg-gray-100">
+                         <!-- Simulating the Microsoft/Google logo area -->
+                         <div class="flex gap-4">
+                             <div class="w-16 h-16 bg-white rounded-lg shadow flex items-center justify-center text-red-500 font-bold text-xs flex-col">
+                                 <i class="ph-fill ph-microsoft-outlook text-3xl"></i>
+                                 <span>Office</span>
+                             </div>
+                             <div class="w-16 h-16 bg-white rounded-lg shadow flex items-center justify-center text-blue-500 font-bold text-xs flex-col">
+                                <i class="ph-fill ph-google-logo text-3xl"></i>
+                                <span>Google</span>
+                            </div>
+                         </div>
+                    </div>
+                    <div class="absolute top-32 left-6 w-14 h-14 bg-brand-card rounded-xl flex items-center justify-center text-brand-cyan shadow-lg border-2 border-white">
+                        <i class="ph-bold ph-cloud text-2xl"></i>
+                    </div>
+                    <div class="pt-12 px-6 pb-20 flex-grow bg-white">
+                        <h3 class="font-bold text-xl mb-2 leading-tight">Cloud, Licenças e Produtividade</h3>
+                        <p class="text-sm text-gray-500">Microsoft 365, Google Workspace e soluções em nuvem.</p>
+                    </div>
+                    <a href="#contato" aria-label="Saiba mais sobre Cloud e Produtividade" class="absolute bottom-6 right-6 w-10 h-10 bg-brand-blue rounded-full flex items-center justify-center text-white shadow-md hover:bg-brand-cyan hover:text-brand-dark transition-colors">
+                        <i class="ph-bold ph-caret-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 relative flex flex-col h-full group">
+                    <div class="h-40 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&q=80&w=400" alt="Security" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-brand-blue/40 mix-blend-multiply"></div>
+                    </div>
+                    <div class="absolute top-32 left-6 w-14 h-14 bg-brand-card rounded-xl flex items-center justify-center text-brand-cyan shadow-lg border-2 border-white">
+                        <i class="ph-bold ph-lock-key text-2xl"></i>
+                    </div>
+                    <div class="pt-12 px-6 pb-20 flex-grow bg-white">
+                        <h3 class="font-bold text-xl mb-2">Segurança Digital</h3>
+                        <p class="text-sm text-gray-500">Antivírus, MDM e proteção dos seus dispositivos.</p>
+                    </div>
+                    <a href="#contato" aria-label="Saiba mais sobre Segurança Digital" class="absolute bottom-6 right-6 w-10 h-10 bg-brand-blue rounded-full flex items-center justify-center text-white shadow-md hover:bg-brand-cyan hover:text-brand-dark transition-colors">
+                        <i class="ph-bold ph-caret-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 relative flex flex-col h-full group">
+                    <div class="h-40 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400" alt="Business" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-brand-navy/60 mix-blend-multiply"></div>
+                    </div>
+                    <div class="absolute top-32 left-6 w-14 h-14 bg-brand-card rounded-xl flex items-center justify-center text-brand-cyan shadow-lg border-2 border-white">
+                        <i class="ph-bold ph-users-three text-2xl"></i>
+                    </div>
+                    <div class="pt-12 px-6 pb-20 flex-grow bg-white">
+                        <h3 class="font-bold text-xl mb-2">Soluções Personalizadas</h3>
+                        <p class="text-sm text-gray-500">Projetos sob medida para as necessidades da sua empresa.</p>
+                    </div>
+                    <a href="#contato" aria-label="Saiba mais sobre Soluções Personalizadas" class="absolute bottom-6 right-6 w-10 h-10 bg-brand-blue rounded-full flex items-center justify-center text-white shadow-md hover:bg-brand-cyan hover:text-brand-dark transition-colors">
+                        <i class="ph-bold ph-caret-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="vivo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-0 py-10 relative z-20">
+        <div class="bg-gradient-to-r from-[#03091e] via-[#091a45] to-[#03091e] rounded-2xl shadow-2xl border border-gray-700/50 p-8 lg:p-10 flex flex-col lg:flex-row items-center gap-8 justify-between relative overflow-hidden">
+            <!-- Glow effect inside banner -->
+            <div class="absolute bottom-0 left-1/4 right-1/4 h-1 bg-gradient-to-r from-transparent via-brand-cyan to-transparent shadow-[0_-10px_30px_rgba(0,212,255,0.4)]"></div>
+
+            <!-- Left: Logo Area -->
+            <div class="flex flex-col items-center lg:items-start flex-shrink-0">
+                <span class="text-xs tracking-[0.2em] text-gray-300 font-semibold mb-2">PARCEIRO AUTORIZADO</span>
+                <div class="flex items-center text-3xl font-bold tracking-tight">
+                    <span class="text-white">vivo</span>
+                    <i class="ph-fill ph-user-circle-plus text-brand-cyan ml-1 text-4xl"></i>
+                </div>
+                <span class="text-lg text-white">Empresas</span>
+            </div>
+
+            <!-- Middle: Divider & Text -->
+            <div class="hidden lg:block w-px h-24 bg-gray-600/50 mx-4"></div>
+            
+            <div class="text-center lg:text-left max-w-sm">
+                <p class="text-gray-300 text-lg">
+                    A força da Vivo para o seu negócio com o atendimento especializado da Vitale Telecom.
+                </p>
+            </div>
+
+            <!-- Right: List -->
+            <div class="flex-shrink-0 w-full lg:w-auto">
+                <ul class="space-y-4 text-sm text-gray-300">
+                    <li class="flex items-center gap-3">
+                        <i class="ph ph-clipboard-text text-xl text-white"></i> Planos exclusivos empresariais
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="ph ph-wifi-high text-xl text-white"></i> Soluções completas em conectividade
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="ph ph-gear text-xl text-white"></i> Condições diferenciadas para o seu CNPJ
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="ph ph-users text-xl text-white"></i> Atendimento consultivo e especializado
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-24 relative overflow-hidden bg-brand-dark">
+        <!-- Abstract Tech Background Right -->
+        <div class="absolute top-0 right-0 w-full lg:w-1/2 h-full opacity-30 pointer-events-none">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80" alt="Tech Background" class="w-full h-full object-cover object-right">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#030b20] via-[#030b20]/80 to-transparent"></div>
+            
+            <!-- Floating hexagonal icons simulation -->
+            <div class="absolute top-1/4 right-1/4 w-16 h-16 bg-transparent border-2 border-brand-cyan flex items-center justify-center rounded-lg rotate-12 backdrop-blur-sm">
+                <i class="ph ph-laptop text-white text-2xl -rotate-12"></i>
+            </div>
+            <div class="absolute top-1/2 right-1/3 w-16 h-16 bg-transparent border-2 border-white flex items-center justify-center rounded-lg -rotate-12 backdrop-blur-sm">
+                <i class="ph ph-phone text-white text-2xl rotate-12"></i>
+            </div>
+            <div class="absolute bottom-1/4 right-1/4 w-20 h-20 bg-transparent border-2 border-brand-cyan flex items-center justify-center rounded-lg rotate-6 backdrop-blur-sm">
+                <i class="ph ph-shield-check text-white text-3xl -rotate-6"></i>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-2">
+            <div class="pt-10 pb-10 pr-10">
+                <p class="text-brand-cyan text-sm font-bold uppercase tracking-widest mb-5">Nosso diferencial</p>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-6">
+                    Por que escolher <br>
+                    <span class="text-brand-cyan glow-cyan">a Vitale Telecom?</span>
+                </h2>
+                <p class="text-gray-300 text-lg mb-10 max-w-md">
+                    Você conta com uma equipe que entende o seu negócio e combina tecnologia, proximidade e suporte para manter sua operação em movimento.
+                </p>
+                <div class="grid sm:grid-cols-3 gap-6 mb-10 max-w-2xl">
+                    <div>
+                        <i class="ph-bold ph-headset text-brand-cyan text-3xl"></i>
+                        <h3 class="text-white font-bold mt-3 mb-1">Atendimento próximo</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Orientação consultiva para cada necessidade.</p>
+                    </div>
+                    <div>
+                        <i class="ph-bold ph-shield-check text-brand-cyan text-3xl"></i>
+                        <h3 class="text-white font-bold mt-3 mb-1">Operação segura</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Soluções estáveis para sua empresa.</p>
+                    </div>
+                    <div>
+                        <i class="ph-bold ph-puzzle-piece text-brand-cyan text-3xl"></i>
+                        <h3 class="text-white font-bold mt-3 mb-1">Tudo integrado</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Tecnologia conectada em um só parceiro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato" class="relative pt-24 pb-16 overflow-hidden bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-end">
+                
+                <!-- Left side content -->
+                <div id="suporte" class="lg:col-span-8">
+                    <h2 class="text-3xl sm:text-4xl font-black leading-tight mb-4 uppercase">
+                        Onde o seu negócio estiver, <br>
+                        <span class="text-brand-cyan">a Vitale conecta.</span>
+                    </h2>
+                    <p class="text-gray-400 text-lg mb-8 max-w-md">
+                        Fale com nossos especialistas e receba uma proposta personalizada.
+                    </p>
+                    <a href="mailto:heliton@vitaletelecom.com.br" class="inline-flex items-center gap-2 text-gray-300 hover:text-brand-cyan transition-colors mb-6">
+                        <i class="ph ph-envelope-simple text-xl text-brand-cyan"></i>
+                        heliton@vitaletelecom.com.br
+                    </a>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="http://wa.me/556681084567" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center gap-2 bg-brand-cyan text-brand-dark font-bold rounded-lg px-5 py-2.5 hover:bg-white transition-colors duration-300">
+                            <i class="ph-fill ph-whatsapp-logo text-xl"></i>
+                            Falar no WhatsApp
+                        </a>
+                        <a href="mailto:heliton@vitaletelecom.com.br?subject=Solicita%C3%A7%C3%A3o%20de%20proposta" class="inline-flex justify-center items-center gap-2 border border-gray-500 text-white font-medium rounded-lg px-4 py-2.5 hover:border-white hover:bg-white/5 transition-colors duration-300">
+                            Pedir proposta
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right side Logo -->
+                <div class="lg:col-span-4 flex flex-col items-start lg:items-end pb-4">
+                   <img src="logo.png" alt="Vitale Telecom Logo" class="h-16 sm:h-20 w-auto object-contain"> 
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            const isOpen = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            mobileMenuButton.setAttribute('aria-expanded', String(!isOpen));
+            mobileMenuButton.setAttribute('aria-label', isOpen ? 'Abrir menu' : 'Fechar menu');
+            mobileMenu.classList.toggle('hidden', isOpen);
+            mobileMenuButton.querySelector('i').className = isOpen ? 'ph ph-list' : 'ph ph-x';
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                mobileMenuButton.setAttribute('aria-label', 'Abrir menu');
+                mobileMenuButton.querySelector('i').className = 'ph ph-list';
+            });
+        });
+    </script>
+
+</body>
+</html>
