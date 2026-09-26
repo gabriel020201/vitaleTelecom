@@ -113,6 +113,16 @@
         .mobile-menu {
             border-top: 1px solid rgba(28, 77, 145, 0.65);
         }
+        .solutions-menu {
+            box-shadow: 0 16px 36px rgba(8, 26, 53, 0.16);
+        }
+        .solutions-menu a {
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .solutions-menu a:hover {
+            background-color: #E8F8FB;
+            color: #1656A8;
+        }
         .hero-image-fade {
             background-color: #081A35;
         }
@@ -139,18 +149,32 @@
             <!-- Desktop Navigation -->
             <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium text-brand-dark">
                 <a href="#inicio" class="nav-link active">Início</a>
-                <a href="#solucoes" class="nav-link flex items-center gap-1">Soluções <i class="ph-bold ph-caret-down text-xs"></i></a>
+                <div id="solutions-dropdown" class="relative">
+                    <button id="solutions-button" type="button" class="nav-link flex items-center gap-1 focus-ring" aria-expanded="false" aria-controls="solutions-menu">
+                        Soluções <i class="ph-bold ph-caret-down text-xs transition-transform"></i>
+                    </button>
+                    <div id="solutions-menu" class="solutions-menu hidden absolute left-0 top-full mt-3 w-64 overflow-hidden rounded-xl border border-gray-200 bg-white py-2 text-sm text-brand-dark">
+                        <a href="#solucoes" class="block px-4 py-3 font-semibold">Todas as soluções</a>
+                        <a href="#solucoes" class="block px-4 py-3">Conectividade</a>
+                        <a href="#solucoes" class="block px-4 py-3">Telefonia e comunicação</a>
+                        <a href="#solucoes" class="block px-4 py-3">Cloud e produtividade</a>
+                        <a href="#solucoes" class="block px-4 py-3">Segurança digital</a>
+                    </div>
+                </div>
                 <a href="#vivo" class="nav-link">Vivo Empresas</a>
                 <a href="#sobre" class="nav-link">Por que a Vitale</a>
-                <a href="#suporte" class="nav-link">Suporte</a>
                 <a href="#contato" class="nav-link">Contato</a>
             </nav>
 
             <!-- CTA Button -->
-            <div class="hidden md:block">
-                <a href="http://wa.me/556681084567" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-brand-cyan text-brand-cyan rounded-full px-5 py-2 text-sm font-semibold hover:bg-brand-cyan hover:text-brand-dark transition-all duration-300 shadow-[0_0_8px_rgba(0,199,232,0.14)] hover:shadow-[0_0_12px_rgba(0,199,232,0.24)]">
+            <div class="hidden md:flex items-center gap-2">
+                <a href="http://wa.me/556630144660" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-brand-cyan text-brand-cyan rounded-full px-5 py-2 text-sm font-semibold hover:bg-brand-cyan hover:text-brand-dark transition-all duration-300 shadow-[0_0_8px_rgba(0,199,232,0.14)] hover:shadow-[0_0_12px_rgba(0,199,232,0.24)]">
                     <i class="ph-fill ph-whatsapp-logo text-lg"></i>
                     Fale com um especialista
+                </a>
+                <a href="https://vitaletelecom.tomticket.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-brand-cyan text-brand-cyan rounded-full px-4 py-2 text-sm font-semibold hover:bg-brand-cyan hover:text-brand-dark transition-all duration-300">
+                    <i class="ph-bold ph-headset text-base"></i>
+                    Suporte
                 </a>
             </div>
 
@@ -165,8 +189,11 @@
                 <a href="#solucoes" class="mobile-nav-link">Soluções</a>
                 <a href="#vivo" class="mobile-nav-link">Vivo Empresas</a>
                 <a href="#sobre" class="mobile-nav-link">Por que a Vitale</a>
-                <a href="#suporte" class="mobile-nav-link">Suporte</a>
-                <a href="http://wa.me/556681084567" target="_blank" rel="noopener noreferrer" class="mobile-nav-link text-brand-cyan">Falar com especialista</a>
+                <a href="#suporte" class="mobile-nav-link inline-flex items-center gap-2 text-brand-cyan">
+                    <i class="ph-bold ph-headset"></i>
+                    Suporte
+                </a>
+                <a href="http://wa.me/556630144660" target="_blank" rel="noopener noreferrer" class="mobile-nav-link text-brand-cyan">Falar com especialista</a>
             </div>
         </nav>
     </header>
@@ -191,7 +218,7 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 mb-14">
-                    <a href="http://wa.me/556681084567" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center gap-2 bg-brand-cyan text-brand-dark font-bold rounded-lg px-5 py-2.5 hover:bg-white transition-colors duration-300 shadow-[0_0_10px_rgba(0,199,232,0.24)]">
+                    <a href="http://wa.me/556630144660" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center gap-2 bg-brand-cyan text-brand-dark font-bold rounded-lg px-5 py-2.5 hover:bg-white transition-colors duration-300 shadow-[0_0_10px_rgba(0,199,232,0.24)]">
                         <i class="ph-fill ph-whatsapp-logo text-xl"></i>
                         Falar com especialista <i class="ph-bold ph-arrow-right"></i>
                     </a>
@@ -222,16 +249,18 @@
             </div>
 
             <!-- Hero Image Placeholder -->
-            <div class="hero-image-fade relative h-[360px] lg:h-[520px] overflow-hidden">
-                <!-- Using a tech-business image as a realistic placeholder for the described image -->
-                <img src="assets/imagemSector.jpeg" alt="Soluções de tecnologia para empresas" class="w-full h-full object-cover object-center">
-                <!-- Overlay styling to match the blue technological feel -->
-                <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/50 to-brand-blue/10 mix-blend-overlay"></div>
-                <!-- Network graphics placeholder -->
-                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/connected.png')] opacity-20"></div>
-            </div>
+            <!-- Hero Image Container Melhorado -->
+<div class="relative w-full max-w-[640px] justify-self-end rounded-2xl lg:rounded-3xl overflow-hidden border border-brand-cyan/30 shadow-[0_0_40px_rgba(0,184,212,0.18)] group">
+    
+    <!-- Imagem da Secção -->
+    <img src="assets/imagemSector.jpeg" alt="Soluções de tecnologia para empresas" class="w-full h-[360px] lg:h-[520px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700">
+    
+    <!-- Gradientes de Fusão com o Fundo Dark (#081A35) -->
+    <div class="absolute inset-0 bg-gradient-to-t from-[#081A35] via-transparent to-transparent opacity-70 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#081A35]/40 via-transparent to-transparent pointer-events-none"></div>
+    <div class="absolute inset-0 bg-brand-blue/10 mix-blend-overlay pointer-events-none"></div>
 
-        </div>
+    </div>
     </section>
 
     <section id="solucoes" class="bg-white text-gray-900 py-20 lg:py-24">
@@ -485,20 +514,37 @@
                     <p class="text-gray-600 text-lg mb-8 max-w-md">
                         Fale com nossos especialistas e receba uma proposta personalizada.
                     </p>
-                    <p class="text-gray-600 text-lg mb-4 max-w-md">
+                    <p class="text-gray-600 text-lg mb-6 max-w-md">
                         Atendimento de segunda a sexta-feira, das 8h às 18h.
                     </p>
-                    <p class="text-gray-600 text-lg mb-4 max-w-md">
-                        Telefone: <a href="tel:+556630144660" class="text-brand-cyan hover:underline">+55 (66) 3014-4660</a>
-                    </p>
-                    <p class="text-gray-600 text-lg mb-4 max-w-md">
-                        WhatsApp: <a href="http://wa.me/556630144660" target="_blank" rel="noopener noreferrer" class="text-brand-cyan hover:underline">+55 (66) 8108-4567</a>
+                    <div class="grid sm:grid-cols-2 gap-6 mb-6 text-sm text-gray-600">
+                        <address class="not-italic">
+                            <strong class="block text-brand-dark mb-2">Loja principal</strong>
+                            <span class="block">R. Dom Pedro II, 672</span>
+                            <span class="block">Vila Aurora I, Rondonópolis - MT</span>
+                            <span class="block mb-2">78740-024</span>
+                            <span class="inline-flex items-center gap-2">
+                                <i class="ph-fill ph-whatsapp-logo text-lg text-brand-cyan"></i>
+                                <a href="http://wa.me/556630144660" target="_blank" rel="noopener noreferrer" class="text-brand-cyan hover:underline">(66) 3014-4660</a>
+                            </span>
+                        </address>
+                        <address class="not-italic">
+                            <strong class="block text-brand-dark mb-2">Filial</strong>
+                            <span class="block">R. das Nogueiras, Nº 518 - Sl 04</span>
+                            <span class="block">Centro, Sinop - MT</span>
+                            <span class="block mb-2">78550-226</span>
+                            <span class="inline-flex items-center gap-2">
+                                <i class="ph-fill ph-whatsapp-logo text-lg text-brand-cyan"></i>
+                                <a href="http://wa.me/556630151387" target="_blank" rel="noopener noreferrer" class="text-brand-cyan hover:underline">(66) 3015-1387</a>
+                            </span>
+                        </address>
+                    </div>
                     <a href="mailto:atendimento@vitaletelecom.com.br" class="inline-flex items-center gap-2 text-gray-700 hover:text-brand-cyan transition-colors mb-6">
                         <i class="ph ph-envelope-simple text-xl text-brand-cyan"></i>
                         atendimento@vitaletelecom.com.br
                     </a>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="http://wa.me/556681084567" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center gap-2 bg-brand-cyan text-brand-dark font-bold rounded-lg px-5 py-2.5 hover:bg-white transition-colors duration-300">
+                        <a href="http://wa.me/556630144660" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center gap-2 bg-brand-cyan text-brand-dark font-bold rounded-lg px-5 py-2.5 hover:bg-white transition-colors duration-300">
                             <i class="ph-fill ph-whatsapp-logo text-xl"></i>
                             Falar no WhatsApp
                         </a>
@@ -518,6 +564,41 @@
     </footer>
 
     <script>
+        const solutionsDropdown = document.getElementById('solutions-dropdown');
+        const solutionsButton = document.getElementById('solutions-button');
+        const solutionsMenu = document.getElementById('solutions-menu');
+        const solutionsIcon = solutionsButton.querySelector('i');
+
+        const closeSolutionsMenu = () => {
+            solutionsMenu.classList.add('hidden');
+            solutionsButton.setAttribute('aria-expanded', 'false');
+            solutionsIcon.classList.remove('rotate-180');
+        };
+
+        solutionsButton.addEventListener('click', () => {
+            const isOpen = solutionsButton.getAttribute('aria-expanded') === 'true';
+            solutionsMenu.classList.toggle('hidden', isOpen);
+            solutionsButton.setAttribute('aria-expanded', String(!isOpen));
+            solutionsIcon.classList.toggle('rotate-180', !isOpen);
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!solutionsDropdown.contains(event.target)) {
+                closeSolutionsMenu();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeSolutionsMenu();
+                solutionsButton.focus();
+            }
+        });
+
+        solutionsMenu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', closeSolutionsMenu);
+        });
+
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
 
